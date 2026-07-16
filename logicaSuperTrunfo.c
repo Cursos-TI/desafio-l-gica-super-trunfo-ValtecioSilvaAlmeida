@@ -89,6 +89,18 @@ int main(void) {
     densidade_populacional_carta_2 = (float) populacao_carta_2 / area_km_carta_2;
     pib_per_capita_carta_2 =  pib_carta_2 / (float) populacao_carta_2;
 
+    if (densidade_populacional_carta_1 > 0.0f) {
+        inverso_densidade_carta_1 = 1.0f / densidade_populacional_carta_1;
+    } else {
+        inverso_densidade_carta_1 = 0.0f;
+    }
+
+    super_poder_carta_1 = (float) populacao_carta_1 + area_km_carta_1 + pib_carta_1 + (float) qtd_pontos_turisticos_carta_1 + inverso_densidade_carta_1;
+
+    inverso_densidade_carta_2 = (densidade_populacional_carta_2 > 0.0f) ? 1.0f / densidade_populacional_carta_2 : 0.0f;
+    super_poder_carta_2 = (float) populacao_carta_2 + area_km_carta_2 + pib_carta_2 + (float) qtd_pontos_turisticos_carta_2 + inverso_densidade_carta_2;
+
+
     printf("------------------------------------ \n\n");
 
     printf("Escolha um comparador: \n");
@@ -108,25 +120,46 @@ int main(void) {
 
     switch (escolha) {
         case 1:
-            printf("População: %s\n", (populacao_carta_1 > populacao_carta_2) ? "Carta 1 Venceu" : (populacao_carta_2 > populacao_carta_1) ? "Carta 2 Venceu" : "Empate");
+            printf("Estados: %c | %c\n", estado_carta_1, estado_carta_2);
+            printf("Atributo escolhido: População\n");
+            printf("População: %d | %d\n", populacao_carta_1, populacao_carta_2);
+            printf("Vencedor: %s\n", (populacao_carta_1 > populacao_carta_2) ? "Carta 1 " : (populacao_carta_2 > populacao_carta_1) ? "Carta 2 " : "Empate");
             break;
         case 2:
-            printf("Área: %s\n", (area_km_carta_1 > area_km_carta_2) ? "Carta 1 Venceu" : (area_km_carta_2 > area_km_carta_1) ? "Carta 2 Venceu" : "Empate");
+            printf("Estados: %c | %c\n", estado_carta_1, estado_carta_2);
+            printf("Atributo escolhido: Área\n");
+            printf("Área: %.2f | %.2f\n", area_km_carta_1, area_km_carta_2);
+            printf("Vencedor: %s\n", (area_km_carta_1 > area_km_carta_2) ? "Carta 1 " : (area_km_carta_2 > area_km_carta_1) ? "Carta 2 " : "Empate");
             break;
         case 3:
-            printf("PIB: %s\n", (pib_carta_1 > pib_carta_2) ? "Carta 1 Venceu" : (pib_carta_2 > pib_carta_1) ? "Carta 2 Venceu" : "Empate");
+            printf("Estados: %c | %c\n", estado_carta_1, estado_carta_2);
+            printf("Atributo escolhido: PIB\n");
+            printf("PIB: %.2f | %.2f\n", pib_carta_1, pib_carta_2);
+            printf("Vencedor: %s\n", (pib_carta_1 > pib_carta_2) ? "Carta 1" : (pib_carta_2 > pib_carta_1) ? "Carta 2 " : "Empate");
             break;
         case 4:
-            printf("Pontos Turísticos: %s\n", (qtd_pontos_turisticos_carta_1 > qtd_pontos_turisticos_carta_2) ? "Carta 1 Venceu" : (qtd_pontos_turisticos_carta_2 > qtd_pontos_turisticos_carta_1) ? "Carta 2 Venceu" : "Empate");
+            printf("Estados: %c | %c\n", estado_carta_1, estado_carta_2);
+            printf("Atributo escolhido: Pontos Turísticos\n");
+            printf("Pontos Turísticos: %d | %d\n", qtd_pontos_turisticos_carta_1, qtd_pontos_turisticos_carta_2);
+            printf("Vencedor: %s\n", (qtd_pontos_turisticos_carta_1 > qtd_pontos_turisticos_carta_2) ? "Carta 1" : (qtd_pontos_turisticos_carta_2 > qtd_pontos_turisticos_carta_1) ? "Carta 2" : "Empate");
             break;
         case 5:
-            printf("Densidade Populacional: %s\n", (densidade_populacional_carta_1 > densidade_populacional_carta_2) ? "Carta 2 Venceu" : (densidade_populacional_carta_2 > densidade_populacional_carta_1) ? "Carta 1 Venceu" : "Empate");
+            printf("Estados: %c | %c\n", estado_carta_1, estado_carta_2);
+            printf("Atributo escolhido: Densidade Populacional\n");
+            printf("Densidade Populacional: %.2f | %.2f\n", densidade_populacional_carta_1, densidade_populacional_carta_2);
+            printf("Vencedor: %s\n", (densidade_populacional_carta_1 > densidade_populacional_carta_2) ? "Carta 2" : (densidade_populacional_carta_2 > densidade_populacional_carta_1) ? "Carta 1" : "Empate");
             break;
         case 6:
-            printf("PIB per Capita: %s\n", (pib_per_capita_carta_1 > pib_per_capita_carta_2) ? "Carta 1 Venceu" : (pib_per_capita_carta_2 > pib_per_capita_carta_1) ? "Carta 2 Venceu" : "Empate");
+            printf("Estados: %c | %c\n", estado_carta_1, estado_carta_2);
+            printf("Atributo escolhido: PIB per Capita\n");
+            printf("PIB per Capita: %.2f | %.2f\n", pib_per_capita_carta_1, pib_per_capita_carta_2);
+            printf("Vencedor: %s\n", (pib_per_capita_carta_1 > pib_per_capita_carta_2) ? "Carta 1" : (pib_per_capita_carta_2 > pib_per_capita_carta_1) ? "Carta 2" : "Empate");
             break;
         case 7:
-            printf("Super Poder: %s\n", (super_poder_carta_1 > super_poder_carta_2) ? "Carta 1 Venceu" : (super_poder_carta_2 > super_poder_carta_1) ? "Carta 2 Venceu" : "Empate");
+            printf("Estados: %c | %c\n", estado_carta_1, estado_carta_2);
+            printf("Atributo escolhido: Super Poder\n");
+            printf("Super Poder: %.2f | %.2f\n", super_poder_carta_1, super_poder_carta_2);
+            printf("Vencedor: %s\n", (super_poder_carta_1 > super_poder_carta_2) ? "Carta 1" : (super_poder_carta_2 > super_poder_carta_1) ? "Carta 2" : "Empate");
             break;
         default:
             printf("Opção inválida");
@@ -161,17 +194,6 @@ int main(void) {
 
     // printf("\n ------------------------------------ \n\n");
     //
-    // if (densidade_populacional_carta_1 > 0.0f) {
-    //     inverso_densidade_carta_1 = 1.0f / densidade_populacional_carta_1;
-    // } else {
-    //     inverso_densidade_carta_1 = 0.0f;
-    // }
-    //
-    // super_poder_carta_1 = (float) populacao_carta_1 + area_km_carta_1 + pib_carta_1 + (float) qtd_pontos_turisticos_carta_1 + inverso_densidade_carta_1;
-    //
-    // inverso_densidade_carta_2 = (densidade_populacional_carta_2 > 0.0f) ? 1.0f / densidade_populacional_carta_2 : 0.0f;
-    // super_poder_carta_2 = (float) populacao_carta_2 + area_km_carta_2 + pib_carta_2 + (float) qtd_pontos_turisticos_carta_2 + inverso_densidade_carta_2;
-    //
     // printf("Comparação de Cartas:");
     // printf("População: %s\n", (populacao_carta_1 > populacao_carta_2) ? "Carta 1 Venceu" : (populacao_carta_2 > populacao_carta_1) ? "Carta 2 Venceu" : "Empate");
     // printf("Área: %s\n", (area_km_carta_1 > area_km_carta_2) ? "Carta 1 Venceu" : (area_km_carta_2 > area_km_carta_1) ? "Carta 2 Venceu" : "Empate");
@@ -183,3 +205,5 @@ int main(void) {
 
     return 0;
 }
+
+
